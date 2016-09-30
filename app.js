@@ -5,13 +5,9 @@ function addToRoster(event){
   var name = $('#name').val()
   var position = $('#position').val()
   var jersey = $('#jersey').val()
+ // function()
+  var myNewPlayer = ""
   myRoster.push(name,position,jersey);
-// for (var i = in myRoster){}
-// myRoster.push(myPlayer.name, myPlayer.position, myPlayer.jersey);
-//   myPlayer = {
-//       this.name = name,
-//       this.position = position,
-//       this.jersey = jersey,
     
   myPlayer.append(`<div class="player-card">
                 <div>
@@ -27,7 +23,12 @@ function addToRoster(event){
                 </div>
             </div>`)
 
-
+// for (var i = in myRoster){}
+// myRoster.push(myPlayer.name, myPlayer.position, myPlayer.jersey);
+//  function myPlayer = {
+//       this.name = name,
+//       this.position = position,
+//       this.jersey = jersey,
 // function buildMyRoster(name, position,jersey){
 //     for(i = 0; i < myRoster.length; i ++){
         
