@@ -14,7 +14,7 @@
             <h1>My NFL Roster!</h1>
             <p>Just better then yours....</p>
             <div class="player-form">
-                <form class="form-horizontal" onsubmit="addToRoster(event)">
+                <form class="new-player-form">
                     <div class="form-group">
                         <div class="col-xs-3">
                             <input type="text" class="form-control" id="pName" required placeholder="Joe Montana">
@@ -40,14 +40,15 @@
             </div>
 
         </div>
-        <div class="player-roster">
+        <div id="roster" class="player-roster">
+        
         </div>
 
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="app.js"></script>
-    <script src="playerservice.js"><script>
-    <script src="playercontrols.js"><script>
+    <script src="playerservice.js"></script>
+    <script src="playercontrols.js"></script>
 </body>
 
 </html>
