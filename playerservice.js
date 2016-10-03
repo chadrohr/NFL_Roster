@@ -88,7 +88,6 @@ function PlayerService() {
             callback(playersData)
         });
     }
-}
 function updateMyRoster(playerArr) {
     var template = '';
 
@@ -128,10 +127,10 @@ function updateMyRoster(playerArr) {
 
 }
 
-function updateNFLRoster(playerArr) {
+this.updateNFLRoster = (playerArr)=>{
     var template = "";
 
-    var tempArr = playerArr.slice(index, 1);
+    var tempArr = playerArr.slice(0,50);
 
     tempArr.forEach(function (player) {
         template += `
@@ -140,8 +139,8 @@ function updateNFLRoster(playerArr) {
         <button id="add-${player.id}" class="button success add-button">Add Player To Roster</button>
         <img class="player-image" src="${player.photo}" alt="Photo of: ${player.fullname}">
         <p>${player.fullname}</p>
-        <p>${myPlayerService.player.pro_team}</p>
-        <p>${myPlayerService.player.position}</p>
+        <p>${player.pro_team}</p>
+        <p>${player.position}</p>
         <p>#${player.jersey}</p>
       </div>
     </div>
@@ -150,16 +149,15 @@ function updateNFLRoster(playerArr) {
 
     var element = $('#row-nfl-container');
     element.empty();
-    element.append(template);
+    element.html(template);
 }
 
-function filter(playerArr) {
+this.NFLfilter = (playerArr)=>{
     var name = $('#nfl-search-name').val();
     var team = $('#nfl-search-team').val();
     var pos = $('#nfl-search-position').val();
     var num = $('#nfl-search-number').val();
     var tempArr = playerArr;
-
     tempArr = tempArr.filter(function (player) {
         if (player.fullname.toLowerCase().includes(name.toLowerCase()) || name == "") { return true }
         return false;
@@ -177,7 +175,8 @@ function filter(playerArr) {
 
     tempArr = tempArr.filter(function (player) {
         if (player.jersey == num || num == "") { return true }
-        return false;
+        return false;             console.log(player)
+
     })
     myPlayerService.setFilteredPlayers(tempArr);
     return tempArr;
@@ -202,18 +201,20 @@ function updateAddPlayerClicked(id) {
     element.removeClass("success");
     element.addClass("button-glow");
 }
+}
+var debugFlag = true;
+myPlayerService = new PlayerService()
 
 $('#button-filter').on('click', function (e) {
     e.preventDefault();
     if (debugFlag) { console.log("Filter clicked!") }
-    myPlayerService.setPageIndex(0);
-    updateNFLRoster(filter(myPlayerService.getNFLPlayers()))
+    myPlayerService.updateNFLRoster(myPlayerService.NFLfilter(myPlayerService.getNFLPlayers()))
+
 });
 
 $('#button-filter-clear').on('click', function (e) {
     e.preventDefault();
     if (debugFlag) { console.log("Filter Clear clicked!") }
-    myPlayerService.setPageIndex(0);
     updateNFLRoster(myPlayerService.getNFLPlayers())
     clearFilter();
 });

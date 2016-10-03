@@ -14,8 +14,8 @@ function PlayerController(){
             <button id="remove-${player.id}" class="button alert remove-button">Remove Player</button>
             <img src="${player.photo}" alt="Photo of: ${player.fullname}">
             <p>${player.fullname}</p>
-            <p>${playerService.player.pro_team}</p>
-            <p>${playerService.player.position}</p>
+            <p>${player.pro_team}</p>
+            <p>${player.position}</p>
             <p>#${player.jersey}</p>
         </div>
     </div>
