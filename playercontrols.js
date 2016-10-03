@@ -8,13 +8,19 @@ function PlayerController(){
     for (var i = 0; i < arr.length; i++) {
       var player = arr[i];
       template += `
-      <div class="player-card">
-            <img src="http://s.nflcdn.com/static/content/public/image/fantasy/transparent/200x200/">
-            <h4>${player.name}</h4>
-            <h5>${player.position}</h5>
-            <p>${player.jersey}</p>
-             <button class="remove-player" id="${player.id}">DESTROY FOREVER</button>  
+      
+       <div class="col-sm-6 col-lg-3 player-card">
+        <div class="card text-center">
+            <button id="remove-${player.id}" class="button alert remove-button">Remove Player</button>
+            <img src="${player.photo}" alt="Photo of: ${player.fullname}">
+            <p>${player.fullname}</p>
+            <p>${playerService.player.pro_team}</p>
+            <p>${playerService.player.position}</p>
+            <p>#${player.jersey}</p>
         </div>
+    </div>
+      
+
       `
     }
     rosterElem.empty()
