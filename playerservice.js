@@ -175,7 +175,7 @@ this.NFLfilter = (playerArr)=>{
 
     tempArr = tempArr.filter(function (player) {
         if (player.jersey == num || num == "") { return true }
-        return false;             console.log(player)
+        return false;             
 
     })
     myPlayerService.setFilteredPlayers(tempArr);
