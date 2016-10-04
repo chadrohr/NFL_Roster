@@ -7,8 +7,8 @@ function PlayerController(){
     var template = ''
     for (var i = 0; i < arr.length; i++) {
       var player = arr[i];
-      template += `
-      
+      template += 
+      `
        <div class="col-sm-6 col-lg-3 player-card">
         <div class="card text-center">
             <button id="remove-${player.id}" class="button alert remove-button">Remove Player</button>
@@ -19,8 +19,6 @@ function PlayerController(){
             <p>#${player.jersey}</p>
         </div>
     </div>
-      
-
       `
     }
     rosterElem.empty()

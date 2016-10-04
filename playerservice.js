@@ -2,9 +2,9 @@ function PlayerService() {
     var _players = []  //My Roster Players
     var _nflPlayers = []; // NFL players data
     var _filteredPlayers = [];
-    //  var playersData = [];
+    var playersData = [];
 
-    var id = 3;
+    var id = 3000;
 
     function Player(name, team, pos, jersey, imagelink, id) {
         this.fullname = name;
