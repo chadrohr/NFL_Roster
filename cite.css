@@ -8,9 +8,12 @@ body{
 .frijole{
 font-family: 'Frijole', cursive;
 }
+.rocksalt{
+font-family: 'Rock Salt', cursive;
+}
 .header{
-    color:black;    
-    text-shadow: 2px 2px 5px white;
+    color:mediumpurple;    
+    text-shadow: 2px 2px 5px orangered;
     font-size:50px;
 }
 
@@ -20,6 +23,9 @@ font-family: 'Frijole', cursive;
     display:inline-block;
     border: 1px solid black;
     background-color: rgba(255, 255, 255, .8);
+    border-radius: 7px;
+    max-width: 250px;
+    min-height: 475px;
     
     
 }
@@ -42,10 +48,10 @@ form{
 }
 .flex-roster{
     display:flex;
-    flex-direction:row;
+    align-items: center;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-around;
 }
-.mugshot{
+.picture{
     width:250px;
 }

@@ -6,7 +6,7 @@ function PlayerController() {
   playerService.getNFL(ready)
 
   function ready(data) {
-    debugger
+    
 
 
 
@@ -39,7 +39,7 @@ function PlayerController() {
 
 
   function update(list, target) {
-    debugger
+    
 
     var elem = $(target)
     elem.empty()
@@ -49,11 +49,11 @@ function PlayerController() {
 
       var myTemplate = `
       <div class="player-card text-center">
-          <img src="${player.photo}" alt="">
-          <h3 class="bevan">${player.fullname}</h3>
-          <h4 class="neuton">${player.position}</h4>
-          <p class="neuton">${player.jersey}</p>
-          <p class="neuton">${player.pro_team}</p>
+          <img class="picture"src="${player.photo}" alt="">
+          <h3 class="rocksalt">${player.fullname}</h3>
+          <h4 class="rocksalt">${player.position}</h4>
+          <p class="rocksalt">${player.jersey}</p>
+          <p class="rocksalt">${player.pro_team}</p>
           <div>
              <button class="btn-danger" id="${player.id}">Remove</button>
           </div>          
@@ -61,11 +61,11 @@ function PlayerController() {
       `
       var nflTemplate = `
       <div class="player-card text-center">
-        <img class="mugshot" src="${player.photo}"/>
-        <h3 class="bevan">${player.fullname}</h3>
-        <h4 class="neuton">${player.position}</h4>
-        <p class="neuton">${player.jersey}</p>
-        <p class="neuton">${player.pro_team}</p>
+        <img class="picture" src="${player.photo}"/>
+        <h3 class="rocksalt">${player.fullname}</h3>
+        <h4 class="rocksalt">${player.position}</h4>
+        <p class="rocksalt">${player.jersey}</p>
+        <p class="rocksalt">${player.pro_team}</p>
         <div>
             <button class="btn-success" id="${player.id}">Add</button>
         </div>              

@@ -2,15 +2,15 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Frijole" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Frijole|Rock+Salt" rel="stylesheet">
     <link rel="stylesheet" href="cite.css">
     <meta charset="UTF-8">
     <title>My NFL Roster</title>
 </head>
 
 <body>
-        <div class="container-fluid">
+    <div class="container">
         <div class="header text-center">
             <h1 class="frijole header">My Roster</h1>
         </div>
@@ -18,22 +18,29 @@
             <button class="btn saveMyRoster">Save</button>
         </div>
 
-        <div id="my-roster" class="row">
-            <!--My Roster-->
+        <div class="row">
+            <div class="col-md-12">
+                <div id="my-roster" class="flex-roster">
+                    <!--My Roster-->
+                </div>
+            </div>
         </div>
 
         <div class="header text-center">
             <h1 class="frijole header">NFL Roster</h1>
         </div>
 
-        <div id="roster" class="row">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="roster" class="flex-roster">
             <!--NFL Roster-->
+                </div>
+            </div>
         </div>
     </div>
 
-    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="app.js"></script>
     <script src="playerservice.js"></script>
     <script src="playercontrols.js"></script>
 </body>
