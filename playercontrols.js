@@ -1,52 +1,78 @@
-function PlayerController(){
-  
+function PlayerController() {
+
+
   var playerService = new PlayerService()
-  
-  function updateRoster(arr){
-    var rosterElem = $('#roster')
-    var template = ''
-    for (var i = 0; i < arr.length; i++) {
-      var player = arr[i];
-      template += 
-      `
-       <div class="col-sm-6 col-lg-3 player-card">
-        <div class="card text-center">
-            <button id="remove-${player.id}" class="button alert remove-button">Remove Player</button>
-            <img src="${player.photo}" alt="Photo of: ${player.fullname}">
-            <p>${player.fullname}</p>
-            <p>${player.pro_team}</p>
-            <p>${player.position}</p>
-            <p>#${player.jersey}</p>
-        </div>
-    </div>
-      `
-    }
-    rosterElem.empty()
-    rosterElem.append(template);
-    // registerRemove()
+
+  playerService.getNFL(ready)
+
+  function ready(data) {
+    debugger
+
+
+
+    update(data, '#roster')
+
+
+    $('#roster').on('click', '.btn-success', function () {
+
+      playerService.addToMyPlayers(this.id)
+      update(playerService.getMyPlayers(), '#my-roster')
+      update(playerService.getPlayers(), '#roster')
+    })
+
+    $('#my-roster').on('click', '.btn-danger', function () {
+      playerService.removeMyPlayer(this.id)
+      update(playerService.getMyPlayers(), '#my-roster')
+      update(playerService.getPlayers(), '#roster')
+    })
+    $('.saveMyRoster').on('click', function () {
+      localStorage.setItem('myRoster', JSON.stringify(myPlayers))
+      update()
+    })
+    $('.removeMyRoster').on('click', function () {
+      myPlayers = [];
+      update()
+    })
+
   }
-  
-  $('.new-player-form').on('submit', function addPlayer(event){
-    event.preventDefault();
-    var form = event.target;
-    playerService.addPlayer(form.pName.value, form.pPosition.value, form.pJersey.value)
-    updateRoster(playerService.getPlayers())
-  })
-  
-  $('#roster').on('click', 'button.remove-player', function(){
-     playerService.removePlayer(this.id)
-     updateRoster(playerService.getPlayers())
-  })
-  
-  
-  
-  
-  
-  playerService.getNFL(updateRoster)  
-  
-  
-  
-  
-// updateRoster(playerService.getPlayers())
+
+
+
+  function update(list, target) {
+    debugger
+
+    var elem = $(target)
+    elem.empty()
+
+    for (var i in list) {
+      var player = list[i];
+
+      var myTemplate = `
+      <div class="player-card text-center">
+          <img src="${player.photo}" alt="">
+          <h3 class="bevan">${player.fullname}</h3>
+          <h4 class="neuton">${player.position}</h4>
+          <p class="neuton">${player.jersey}</p>
+          <p class="neuton">${player.pro_team}</p>
+          <div>
+             <button class="btn-danger" id="${player.id}">Remove</button>
+          </div>          
+      </div>
+      `
+      var nflTemplate = `
+      <div class="player-card text-center">
+        <img class="mugshot" src="${player.photo}"/>
+        <h3 class="bevan">${player.fullname}</h3>
+        <h4 class="neuton">${player.position}</h4>
+        <p class="neuton">${player.jersey}</p>
+        <p class="neuton">${player.pro_team}</p>
+        <div>
+            <button class="btn-success" id="${player.id}">Add</button>
+        </div>              
+      </div>
+      `
+      elem.append(target == '#roster' ? nflTemplate : myTemplate)
+    }
+  }
 }
 PlayerController()
